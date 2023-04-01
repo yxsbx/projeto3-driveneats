@@ -1,6 +1,10 @@
+// Por padrão, o botão de finalizar pedido deve vir desabilitado. Ao clicar no botão nesse estado, nada deve acontecer.
+
 let selectedDish;
 let selectedDrink;
 let selectedDessert;
+
+// Função que pega no HTML o nome e o preço de cada produto e ativa a seleção com borda verde
 
 function selectDish(dish) {
     selectedDish = {
@@ -44,6 +48,8 @@ function selectDessert(dessert) {
     unlockedOrderBtn();
 }
 
+// Funções que define o desbloqueio do botaão de baixo mudando ele de bloqueado para desbloqueado quando selecionamos as 3 classes
+
 function unlockedOrderBtn() {
     if (selectedDish !== undefined && selectedDrink !== undefined && selectedDessert !== undefined) {
         const unlockedOrderBtn = document.querySelector('.unlocked-order-btn');
@@ -61,6 +67,8 @@ function orderBtn() {
     containerConfirmOrder.classList.toggle('display-none');
 }
 
+// Função para fazer a soma do valor total dos produtos do pedido usando o toFixed
+
 function totalPrice() {
     let total = 0;
     const priceList = [selectedDish.price, selectedDrink.price, selectedDessert.price];
@@ -69,6 +77,8 @@ function totalPrice() {
 
     return total.toFixed(2)
 }
+
+// Função que renderiza o pedido e mostra ao cliente o nome do produto escolhido, valor de cada e a soma total
 
 function renderConfirmOrder() {
     const confirmOrderString = `<li>
@@ -92,15 +102,19 @@ function renderConfirmOrder() {
     confirmOrderUl.innerHTML = confirmOrderString;
 }
 
+// Função do prompt de dados pessoais, coloquei uma condição de loop em caso o cliente não preencha as informações e que o promp avance apenas se tiver algo escrito dentro dele
+
 function whatsappNumber() {
     let customerName = prompt('Insira seu nome');
     while (customerName.trim() === "") {
-    customerName = prompt('Insira seu nome');
-}
+        customerName = prompt('Insira seu nome');
+    }
     let customerAddress = prompt('Insira seu endereço');
     while (customerAddress.trim() === "") {
-    customerAddress = prompt('Insira seu endereço');
-}
+        customerAddress = prompt('Insira seu endereço');
+    }
+
+    // Link do meu número de whatsApp e mensagem que puxa os dados do pedido (produtos, preço e preço total + informações inseridas no prompt)
 
     const whatsappNumberString = `
     Olá, gostaria de fazer o pedido:
