@@ -48,7 +48,7 @@ function selectDessert(dessert) {
     unlockedOrderBtn();
 }
 
-// Funções que define o desbloqueio do botaão de baixo mudando ele de bloqueado para desbloqueado quando selecionamos as 3 classes
+// Funções que definem o desbloqueio do botaão de baixo mudando ele de bloqueado para desbloqueado quando selecionamos as 3 classes
 
 function unlockedOrderBtn() {
     if (selectedDish !== undefined && selectedDrink !== undefined && selectedDessert !== undefined) {
